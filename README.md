@@ -3,4 +3,4 @@
 
 
 # Marking parking area positions
-https://user-images.githubusercontent.com/42292760/164526627-05bf9a9a-55d0-4062-899d-a5e38133ebb6.mp4
+![Screenshot from 2022-04-23 02-07-49](https://user-images.githubusercontent.com/42292760/164778727-d42b1d8b-9453-4fcb-a3b0-9c6bda6c248f.png)
