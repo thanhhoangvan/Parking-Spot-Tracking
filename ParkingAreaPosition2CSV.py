@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-def marked(image, x0, y0, x1, y1):
+def marked(img, x0, y0, x1, y1):
 	shapes = np.zeros_like(img, np.uint8)
 	cv2.rectangle(shapes, (x0, y0), (x1, y1), (118, 185, 0), cv2.FILLED)
 	cv2.rectangle(shapes, (x0, y0), (x1, y1), (0, 255, 0), thickness=2)
