@@ -18,6 +18,8 @@ data_dir   = './data/'
 car_dir    = data_dir + 'car/'
 noncar_dir = data_dir + 'non_car/'
 
+(height, width) = (50, 100)
+
 def CSV2Positions(csv_file_link):
 	Positions = {}
 
@@ -36,9 +38,10 @@ def cropParkingImages(image=None, positions={}):
     position_ids = positions.keys()
     for id in position_ids:
         (x0, y0, x1, y1) = positions[id]
-        parking_slot = image[y0:y1, x0:x1]
+        parking_slot = image[y0:y1, x0:x1].copy()
 
         try:
+            parking_slot = cv2.resize(parking_slot, (width, height))
             cv2.imwrite(data_dir + str(count)+'.jpg', parking_slot)
         except:
             pass
