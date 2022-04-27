@@ -12,7 +12,7 @@ import cv2
 import csv
 
 position_csv = './positions.csv'
-video_url = './data/carPark.mp4'
+video_url = 'carPark.mp4'
 
 data_dir   = './data/'
 car_dir    = data_dir + 'car/'
