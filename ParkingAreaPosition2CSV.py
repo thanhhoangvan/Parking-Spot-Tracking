@@ -58,7 +58,7 @@ if __name__ == '__main__':
 	count = 0
 
 	# Input video
-	video = cv2.VideoCapture('./data/carPark.mp4')
+	video = cv2.VideoCapture('./carPark.mp4')
 	_, img = video.read()
 	img_temp = img.copy()
 	video.release()

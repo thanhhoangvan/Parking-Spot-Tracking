@@ -44,7 +44,7 @@ def CSV2Positions(csv_file_link):
 	return Positions
 
 if __name__=='__main__':
-	video_link = './data/carPark.mp4'
+	video_link = './carPark.mp4'
 	csv_link   = './positions.csv'
 
 	positions = CSV2Positions(csv_link)
