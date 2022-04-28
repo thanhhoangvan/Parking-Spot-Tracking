@@ -9,7 +9,7 @@
 
 import os
 # set tensorflow, keras run on CPU, Because my computer has conflict between CUDA and Tensorflow version
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 import cv2
 import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -32,7 +32,7 @@ model = make_model(num_classes, image_shape)
 history = model.fit(train_data, epochs=epochs)
 
 model.save("my_model")
-model.save("my_h5_model.h5")
+model.save_weights("my_h5_model.h5")
 
 acc = history.history['accuracy']
 loss = history.history['loss']

@@ -33,5 +33,5 @@ def make_model(num_classes=2, img_shape=(50, 100, 3)):
                 loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                 metrics=['accuracy'])
 
-    print(model.summary())
+    # print(model.summary())
     return model
