@@ -66,9 +66,9 @@ class ExtractParkingSlot:
         ids_position = positions.keys()
 
         while running.value == 1:
-            if not input_queue.empty():
-                image = input_queue.get()
-                for spot_id in ids_position:
+            for spot_id in ids_position:
+                if not input_queue.empty():
+                    image = input_queue.get()
                     (x0, y0, x1, y1) = positions[spot_id]
                     img_spot = image[y0:y1, x0:x1].copy()
                     img_spot = cv2.cvtColor(img_spot, cv2.COLOR_BGR2RGB)
@@ -175,22 +175,23 @@ class ParkingSpotTracking:
         time.sleep(3)
         while True:
             ret, frame = self.video.read()
-            if frame is None:
-                continue
             if ret:
-                    if not self.frame_queue.full():
-                        self.frame_queue.put(frame)
-                    
-                    if not self.predict_queue.empty():
-                        (ids, status_label) = self.predict_queue.get()
-                        self.parking_status[ids] = [status_label, time.time()]
+                if frame is None:
+                    continue
                 
-                    image = self.Visualize(frame.copy())
-                    cv2.imshow('Tracking', image)
-
-                    if waitKey(25)==ord('q'):
-                        break
+                if not self.frame_queue.full():
+                    self.frame_queue.put(frame)
+                
+                if not self.predict_queue.empty():
+                    (ids, status_label) = self.predict_queue.get()
+                    self.parking_status[ids] = [status_label, time.time()]
             
+                image = self.Visualize(frame.copy())
+                cv2.imshow('Tracking', image)
+
+                if waitKey(25)==ord('q'):
+                    break
+        
             else:
                 break
 
@@ -199,7 +200,7 @@ class ParkingSpotTracking:
 
     def stop(self):
         self.mp_running.value = 0
-        time.sleep(2)
+        time.sleep(5)
         self.Extract.stop()
         self.Predict.stop()
 
